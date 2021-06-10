@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Push Notifications using node</title>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-      window.OneSignal = window.OneSignal || [];
-      OneSignal.push(function() {
-        OneSignal.init({
-          appId: "cf3dfb9a-f44e-4ec1-86c5-b36647660810",
-          safari_web_id: "web.onesignal.auto.194684e9-1eab-45d0-91dc-36dcc25bd22e",
-          notifyButton: {
-            enable: true,
-          },
-        });
-        OneSignal.showNativePrompt(); 
-      });
-    </script>
-</head>
-<body>
-    <h1> Push Notifications using node </h1>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Push Notifications using node</title>
+		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+		<script>
+			window.OneSignal = window.OneSignal || [];
+			OneSignal.push(function () {
+				OneSignal.init({
+					appId: 'cf3dfb9a-f44e-4ec1-86c5-b36647660810',
+					safari_web_id: 'web.onesignal.auto.194684e9-1eab-45d0-91dc-36dcc25bd22e',
+					notifyButton: {
+						enable: true,
+					},
+				});
+				OneSignal.showNativePrompt();
+			});
+			document.addEventListener(
+				'deviceready',
+				function () {
+					window.OneSignal.setLogLevel({ logLevel: 4, visualLevel: 4 });
+
+					var notificationOpenedCallback = function (jsonData) {
+						console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+					};
+
+					window.OneSignal.startInit('cf3dfb9a-f44e-4ec1-86c5-b36647660810')
+						.handleNotificationOpened(notificationOpenedCallback)
+						.endInit();
+
+					window.OneSignal.getIds(function (ids) {
+						alert('player id: ' + ids.userId);
+					});
+				},
+				false
+			);
+		</script>
+	</head>
+	<body>
+		<h1>Push Notifications using node</h1>
+	</body>
 </html>
