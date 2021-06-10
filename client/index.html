@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Push Notifications using node</title>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "cf3dfb9a-f44e-4ec1-86c5-b36647660810",
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
 </head>
 <body>
     <h1> Push Notifications using node </h1>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "cf3dfb9a-f44e-4ec1-86c5-b36647660810",
-      notifyButton: {
-        enable: true,
-      },
-    });
-  });
-</script>
 </body>
 </html>
