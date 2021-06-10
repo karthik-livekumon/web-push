@@ -18,7 +18,8 @@
 				});
 				OneSignal.showNativePrompt();
 			});
-			console.log( await OneSignal.getUserId());
+			let data = await OneSignal.getUserId()
+            console.log(data)
 		</script>
 	</head>
 	<body>
