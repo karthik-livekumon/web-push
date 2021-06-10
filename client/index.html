@@ -8,9 +8,17 @@
 </head>
 <body>
     <h1> Push Notifications using node </h1>
-    <button
-        onclick="send()"
-    >Send Notification</button>
-    <script src="client.js"></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "cf3dfb9a-f44e-4ec1-86c5-b36647660810",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
 </body>
 </html>
