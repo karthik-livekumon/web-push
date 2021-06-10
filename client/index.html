@@ -21,18 +21,12 @@
 			document.addEventListener(
 				'deviceready',
 				function () {
-					window.OneSignal.setLogLevel({ logLevel: 4, visualLevel: 4 });
-
-					var notificationOpenedCallback = function (jsonData) {
-						console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-					};
-
-					window.OneSignal.startInit('cf3dfb9a-f44e-4ec1-86c5-b36647660810')
+					window.plugins.OneSignal.startInit('cf3dfb9a-f44e-4ec1-86c5-b36647660810')
 						.handleNotificationOpened(notificationOpenedCallback)
 						.endInit();
 
-					window.OneSignal.getIds(function (ids) {
-						alert('player id: ' + ids.userId);
+					window.plugins.OneSignal.getPermissionSubscriptionState(function (status) {
+						idapp = status.subscriptionStatus.userId;
 					});
 				},
 				false
