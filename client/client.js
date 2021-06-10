@@ -2,6 +2,9 @@ const sendNotification = async () => {
 	let data = await window.OneSignal.getUserId();
 	fetch('https://onesignal.com/api/v1/notifications', {
 		method: 'POST',
+        headers:{
+            "Content-Type":"application/json"
+        },
 		body: JSON.stringify({
 			app_id: 'cf3dfb9a-f44e-4ec1-86c5-b36647660810',
 			contents: { en: 'Teacher is On Leave' },
