@@ -18,23 +18,7 @@
 				});
 				OneSignal.showNativePrompt();
 			});
-			document.addEventListener(
-				'deviceready',
-				function () {
-					var notificationOpenedCallback = function (jsonData) {
-						console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-					};
-
-					window.plugins.OneSignal.startInit('cf3dfb9a-f44e-4ec1-86c5-b36647660810')
-						.handleNotificationOpened(notificationOpenedCallback)
-						.endInit();
-
-					window.plugins.OneSignal.getPermissionSubscriptionState(function (status) {
-						console.log(status.subscriptionStatus.userId);
-					});
-				},
-				false
-			);
+			console.log( await OneSignal.getUserId());
 		</script>
 	</head>
 	<body>
